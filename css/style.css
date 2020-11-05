@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Kanit', sans-serif !important;
+}
+
+#slide {
+    overflow: hidden;
+}
+
+#slide img {
+    height: 100vh;
+}
+
+.dropdown-menu { 
+    min-width: 30vh !important;
+}
+
+.view {
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+    height: 700px;
+}
+
+h6 {
+    line-height: 1.7;
+}
+
+.rgba-gradient {
+    height: 700px;
+    color: white;
+    background-color: rgba(0,0,0,0.25);
+}
+
+#toppic {
+    top: 500px !important;
+}
