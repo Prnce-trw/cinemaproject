@@ -3,6 +3,7 @@
 
 <head>
     <?php include('inc_header.php'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body class="fix-menu">
@@ -58,8 +59,8 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                    <button type="submit"
-                                            class="btn btn-danger btn-md waves-effect text-center m-b-20">Cancel</button>
+                                        <button type="button"
+                                            class="btn btn-danger btn-md waves-effect text-center m-b-20" onclick="myBtn()">Cancel</button>
                                         <button type="submit"
                                             class="btn btn-primary btn-md waves-effect text-center m-b-20">Submit</button>
                                     </div>
@@ -76,6 +77,44 @@
         </div>
         <!-- end of container-fluid -->
     </section>
+
+    <script>
+        function myBtn() {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your Tickets has been deleted.',
+                        'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your Tickets is safe',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
