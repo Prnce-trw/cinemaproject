@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if (!isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['username']);
+    }
+?>
+
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">Y I E W Cenima</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,7 +50,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sign in
+                        Sign in 
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <form class="px-4 py-3">
@@ -62,6 +71,14 @@
                 <li class="nav-item">
                     <a href="register.php" class="btn btn-outline-primary my-2 my-sm-0">Sign up</a>
                 </li>
+                <?php if (isset($_SESSION['name'])) : ?>
+                <li class="nav-item">
+                    <p class="btn btn-outline-primary my-2 my-sm-0"><?php echo $_SESSION['name'] ?></p>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?logout='1'" class="btn btn-outline-primary my-2 my-sm-0">Logout</a>
+                </li>
+                <?php endif ?>
             </ul>
         </div>
     </div>
